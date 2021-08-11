@@ -21,7 +21,19 @@
     const input = document.querySelector("[name='todo']");
     const todoList = document.getElementById('todos');
 
-    const todoData = []
+
+
+//Lifecycle
+
+    //import as array?
+const existingTodos = JSON.parse(localStorage.getItem('todos')) || [];
+    //main array
+const todoData = []
+
+    //iterate over existing-todo and write them into main todo
+existingTodos.forEach(todo => {
+    addTodo(todo);
+});
 
     function addTodo(todoText) {
         todoData.push(todoText);
@@ -38,15 +50,7 @@
         addTodo(input.value);
     }
     
-    //Lifecycle
-
-    const existingTodos = JSON.parse(localStorage.getItem('todos'));
-
-    const todoData = existingTodos || [];
-
-    todoData.forEach(todo => {
-        addTodo(todo);
-    });
+    
 
 </script>
 </body>
